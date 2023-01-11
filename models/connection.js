@@ -3,6 +3,8 @@ require('dotenv').config()
 const MONGODB_URL = process.env.MONGODB_URL
 const mongoose = require("mongoose");
 
+// Allowing information not in schema to be sent
+mongoose.set("strictQuery", false);
 // Establishing a connection to database 
 mongoose.connect(MONGODB_URL)
 
