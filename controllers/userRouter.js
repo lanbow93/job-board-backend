@@ -27,7 +27,7 @@ router.delete("/id", async (request, response) => {
 // Update for Users
 router.put("/:id", async (request, response) => {
     try {
-        await Application.findByIdAndUpdate(request.params.id, request.body)
+        await Application.findByIdAndUpdate(request.params.id, request.body, {new: true})
         response.json(request.body);
     } catch(error) {
         response.status(404).json(error);
