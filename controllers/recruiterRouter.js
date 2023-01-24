@@ -1,13 +1,13 @@
 const router = require('express').Router()
 const Posting = require('../models/jobPosting')
-const { findByIdAndUpdate } = require('../models/userApplication')
 const Application = require('../models/userApplication')
 
 
-// Index for Users
+// Index for ALL Applications
 router.get("/", async (request, response) => {
     try {
-        response.json(await Application.find({}))
+        request.query.postID ? response.json(await Application.find({postID: request.query.postID})) : response.json(await Application.find({}))
+        
     } catch (error){
         response.status(400).json(error)
     }
